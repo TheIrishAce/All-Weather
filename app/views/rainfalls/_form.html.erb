@@ -1,0 +1,22 @@
+<%= form_for([@forecast, @rainfall]) do |f| %>
+<% if @rainfall.errors.any? %>
+<div id="error_explanation">
+<h2><%= pluralize(@rainfall.errors.count, "error")%>
+prohibited this forecast from being saved:</h2>
+<ul>
+<% @rainfall.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+<div class="field">
+<p>
+<%= f.label :amount %><br />
+<%= f.text_field :amount %>
+</p>
+</div>
+<div class="actions">
+<%= f.submit %>
+</div>
+<% end %>

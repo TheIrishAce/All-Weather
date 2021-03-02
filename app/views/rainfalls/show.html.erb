@@ -1,0 +1,7 @@
+<h1>Rainfall Forecast for <%= @forecast.date %> </h1>
+<p>
+<b>Rainfall Amount (mm):</b>
+<%= @rainfall.amount %>
+</p>
+<%= link_to 'Edit', edit_forecast_rainfall_path(@forecast, @rainfall) %> |
+<%= link_to 'Back', forecast_rainfalls_path(@forecast) %>

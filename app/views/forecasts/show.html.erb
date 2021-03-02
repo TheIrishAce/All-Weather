@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @forecast.day %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @forecast.date %>
+</p>
+
+<p>
+  <strong>Forecast:</strong>
+  <%= @forecast.forecast %>
+</p>
+
+<!-- Display the reviews of a movie -->
+<h2>Rainfall Forecast</h2>
+<% @forecast.rainfall.each do |rainfall| %>
+<p>
+<b>Rainfall details:</b>
+<%= rainfall.amount %>
+</p>
+<% end %>
+<%= link_to 'Edit Forecast', edit_forecast_path(@forecast) %> |
+<%= link_to 'Back', forecasts_path %>
+<%= link_to 'Show Forecasts', forecast_rainfalls_path(@forecast) %>
+
+

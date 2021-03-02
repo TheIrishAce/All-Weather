@@ -1,0 +1,21 @@
+<h1>Rainfall forecasts for <%= @forecast.day %> <%= @forecast.date %></h1>
+
+<table>
+<tr>
+<th>Rainfall Forecast details</th>
+</tr>
+<% for rainfall in @rainfalls %>
+<tr>
+<td><%= rainfall.amount %></td>
+<td><%= link_to 'Show', forecast_rainfall_path(@forecast, rainfall)
+%></td>
+<td><%= link_to 'Edit', edit_forecast_rainfall_path(@forecast, rainfall)
+%></td>
+<td><%= link_to 'Destroy', forecast_rainfall_path(@forecast, rainfall),
+:confirm => 'Are you sure?', :method => :delete %></td>
+</tr>
+<% end %>
+</table>
+<br />
+<%= link_to 'New Rainfall Forecast', new_forecast_rainfall_path(@forecast) %>
+<%= link_to 'Back to Weather Forecast', @forecast %>
