@@ -30,7 +30,7 @@ class RainfallsController < ApplicationController
     # Populate an review associate with movie 1 with form data
     # Movie will be associated with the review
     # @rainfall = @forecast.rainfalls.build(params.require(:review).permit!)
-    @rainfall = @forecast.rainfalls.build(params.require(:rainfall).permit(:amount))
+    @rainfall = @forecast.rainfall.build(params.require(:rainfall).permit(:amount))
     if @rainfall.save
     # Save the review successfully
     redirect_to forecast_rainfall_url(@forecast, @rainfall)
