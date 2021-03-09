@@ -53,7 +53,8 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  # Use postgresql as the database for Active Record
+  gem 'pg', '~> 1.1'
   gem 'rails_12factor'
 end
 
