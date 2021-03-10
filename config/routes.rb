@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'home/index'
+  root to: "home#index"
   get 'rainfalls/index'
   get 'rainfalls/show'
   get 'rainfalls/new'

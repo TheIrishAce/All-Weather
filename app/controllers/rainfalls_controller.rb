@@ -1,4 +1,5 @@
 class RainfallsController < ApplicationController
+  #before_action :authenticate_user!
   # GET /movies/1/rainfalls
   def index
     # For URL like /movies/1/rainfalls
