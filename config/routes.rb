@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/signedinuserprofile' => 'profiles#signedinuserprofile'
+  resources :profiles
   devise_for :users
   get 'home/index'
   root to: "home#index"
