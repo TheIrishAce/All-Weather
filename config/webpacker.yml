@@ -16,7 +16,6 @@ default: &default
   cache_manifest: false
 
   # Extract and emit a css file
-  #default false
   extract_css: false
 
   static_assets_extensions:
