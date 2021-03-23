@@ -1,3 +1,3 @@
 class Forecast < ApplicationRecord
-has_many :rainfall
+    has_many :rainfall
 end

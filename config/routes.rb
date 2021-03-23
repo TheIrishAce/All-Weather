@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :blogposts
+  get 'comments/index'
+  get 'comments/show'
+  get 'comments/new'
+  get 'comments/edit'
+  resources :blogposts do
+    resources :comments
+  end
   get '/signedinuserprofile' => 'profiles#signedinuserprofile'
   resources :profiles
   devise_for :users

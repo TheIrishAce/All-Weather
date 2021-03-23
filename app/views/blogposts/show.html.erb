@@ -25,5 +25,17 @@
   <%= @blogpost.image_url %>
 </p>
 
-<%= link_to 'Edit', edit_blogpost_path(@blogpost) %> |
+<!-- Display the reviews of a movie -->
+<h2>Comments</h2>
+<% @blogpost.comment.each do |comment| %>
+<p>
+<b>Comment details:</b>
+<%= comment.message %>
+</p>
+<% end %>
+<%= link_to 'Edit Blog', edit_blogpost_path(@blogpost) %> |
 <%= link_to 'Back', blogposts_path %>
+<%= link_to 'Show Comments', blogpost_comments_path(@blogpost) %>
+
+
+

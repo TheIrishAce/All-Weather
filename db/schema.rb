@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_173502) do
+ActiveRecord::Schema.define(version: 2021_03_23_042035) do
 
   create_table "blogposts", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2021_03_11_173502) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "content"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "message"
+    t.integer "blogpost_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blogpost_id"], name: "index_comments_on_blogpost_id"
   end
 
   create_table "forecasts", force: :cascade do |t|
@@ -63,6 +71,7 @@ ActiveRecord::Schema.define(version: 2021_03_11_173502) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "blogposts"
   add_foreign_key "profiles", "users"
   add_foreign_key "rainfalls", "forecasts"
 end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Comments for <%= @blogpost.title %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+    <% for comment in @comments %>
+  </thead>
+
+  <tbody>
+    <% comment.message %>
+      <tr>
+        <td><%= comment.message %></td>
+        <td><%= link_to 'Show', blogpost_comment_path(@blogpost, comment) %></td>
+        <td><%= link_to 'Edit', edit_blogpost_comment_path(@blogpost, comment) %></td>
+        <td><%= link_to 'Destroy', blogpost_comment_path(@blogpost, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Comment', new_blogpost_comment_path(@blogpost) %>
+<%= link_to 'Back to Post', @blogpost %>
