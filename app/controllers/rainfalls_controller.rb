@@ -52,7 +52,7 @@ class RainfallsController < ApplicationController
   def update
     @forecast = Forecast.find(params[:forecast_id])
     @rainfall = Rainfall.find(params[:id])
-    if @rainfall.update_attributes(params.require(:rainfall).permit(:amount))
+    if @rainfall.update(params.require(:rainfall).permit(:amount))
     # Save the review successfully
     redirect_to forecast_rainfall_url(@forecast, @rainfall)
     else

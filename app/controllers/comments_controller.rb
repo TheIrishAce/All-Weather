@@ -41,13 +41,13 @@ class CommentsController < ApplicationController
     @blogpost = Blogpost.find(params[:blogpost_id])
     # For URL like /Blogposts/1/comments/2/edit
     # Get comment id=2 for Blogpost 1
-    @comment = @blogpost.comments.find(params[:id])
+    @comment = @blogpost.comment.find(params[:id])
   end
 
   def update
     @blogpost = Blogpost.find(params[:blogpost_id])
-    @comment = comment.find(params[:id])
-    if @comment.update_attributes(params.require(:comment).permit(:message))
+    @comment = Comment.find(params[:id])
+    if @comment.update(params.require(:comment).permit(:message))
       # Save the comment successfully
       redirect_to blogpost_comment_url(@blogpost, @comment)
     else
@@ -57,12 +57,12 @@ class CommentsController < ApplicationController
 
   # DELETE /movies/1/reviews/2
   def destroy
-    @blogpost = Blogpost.find(params[:movie_id])
-    @comment = Comment.find(params[:id])
+    @blogpost = Blogpost.find(params[:blogpost_id])
+    @comment = Comment.find(params[:comment_id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to blogpost_comments_path(@blogpost) }
-      format.xml { head :ok }
+      format.html { redirect_to blogpost_comments_path}
+      format.json { head :ok }
     end
   end
   

@@ -37,6 +37,27 @@
                 <div class="p-2"><p><%= blogpost.content %></p></div>
               </div>
             </div>
+            <div>
+              <a href="<%= blogpost_comments_path(blogpost, @comment) %>">Comments Section</a>
+              <a href="<%= @id = Blogpost.find([blogpost.id]) %>">ABC Section</a>
+              <% @comments = blogpost.comment %>
+              <p class="fs-4 p-2">Comments Section</p>
+              <%= link_to 'New Comment', new_blogpost_comment_path(blogpost) %>
+              <% for comment in @comments %>
+                <br>
+                <div class="col-md-12 offset-md-3 pd-5">
+                  <div class="col col-lg-2">
+                  </div>
+                  <div class="col col-lg-6">
+                    <div class=" w-100 p-2 row border bg-light border-secondary rounded-pill border-1 border-bottom-2 border-top-0 border-start-0 border-end-0">
+                      <p class="fw-light">Comment:</p> <p class="fs-6"><%= comment.message %></p>
+                    </div>
+                  </div>
+                  <div class="col col-lg-2">
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -50,7 +71,7 @@
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Admin Menu
   </button>
-  <div class="collapse" id="collapseExample">
+  <!--<div class="collapse" id="collapseExample">-->
     <div class="card card-body">
       <table>
         <thead>
