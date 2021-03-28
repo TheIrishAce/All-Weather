@@ -1,18 +1,49 @@
 <!-- Image and text -->
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="#">
-    <img src="../../assets/images/weather_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    Bootstrap
-  </a>
-  <div class="navbar-text">
-    <% if user_signed_in? %>
-      <div>
-        Signed in as... <%=current_user.email %>
-        (<%=link_to 'Sign out', destroy_user_session_path,:method => :delete%>)
+<nav class="navbar navbar-light bg-light ">
+  <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      <div class="col">
       </div>
-    <% else %>
-      <%=link_to 'Register', new_user_registration_path%> or
-      <%=link_to 'Sign in', new_user_session_path%>      
-    <% end %>
+      <div class="col">
+        <a href="/home/index"><%= image_pack_tag 'weather_icon.png', width:"128", height:"128", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
+        <div class="row text-center mt-2">
+          <p class="fs-5">All Weather</p>
+        </div>
+      </div>
+      <div class="col">
+      </div>
+    </div>
   </div>
 </nav>
+
+
+<div class="row justify-content-center">
+  <div class="d-flex justify-content-end pt-2 border">
+    <div class="d-flex">
+      <div class="col">
+        <div class="d-flex">
+          <% if user_signed_in? %>
+            <p>Signed in as... <%=current_user.email %></p>
+            <%=button_to 'Sign out', destroy_user_session_path, :method => :delete%>
+          <% else %>
+            <%=link_to 'Register', new_user_registration_path%> or
+            <%=link_to 'Sign in', new_user_session_path%>
+          <% end %>
+        </div>
+        <div class="d-flex">
+          <% if current_user.admin? %>
+            <p class="text-success">Admin Account</p>
+          <% else %>
+            <p class="text-success">User Account</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

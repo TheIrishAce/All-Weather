@@ -2,9 +2,13 @@ module.exports = {
     resolve: {
         extensions: ['.css', '.js', '.scss', 'sass'],
         alias: {
-        jquery: 'jquery/src/jquery',
-        $: "jquery",
-        jQuery: "jquery"
+            $: 'jquery',
+            jQuery: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery',
+            "window.$": "jquery",
+            Popper: ['popper.js', 'default'],
+            Rails: ['@rails/ujs']
         }
     }
 }

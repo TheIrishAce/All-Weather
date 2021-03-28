@@ -1,3 +1,3 @@
 class Blogpost < ApplicationRecord
-    has_many :comment
+    has_many :comment, :dependent => :delete_all 
 end

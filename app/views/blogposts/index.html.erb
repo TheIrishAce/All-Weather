@@ -14,9 +14,7 @@
   <div class="container-fluid">
     <div class="row justify-content-md-center">
       <div class="col col-lg-2 justify-content-center">
-        <b>Test 1</b>
       </div>
-      
       <div class="col col-lg-7">
         <% @blogposts.each do |blogpost| %>
           <div class="container bg-light border mb-4 justify-content-md-center">
@@ -38,8 +36,9 @@
               </div>
             </div>
             <div>
+            <% if current_user.admin? %>
               <a href="<%= blogpost_comments_path(blogpost, @comment) %>">Comments Section</a>
-              <a href="<%= @id = Blogpost.find([blogpost.id]) %>">ABC Section</a>
+            <% end %>
               <% @comments = blogpost.comment %>
               <p class="fs-4 p-2">Comments Section</p>
               <%= link_to 'New Comment', new_blogpost_comment_path(blogpost) %>
@@ -67,47 +66,46 @@
       </div>
     </div>
   </div>
- 
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Admin Menu
-  </button>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Content</th>
-            <th>Author</th>
-            <th>Image url</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @blogposts.each do |blogpost| %>
+  
+  <% if current_user.admin? %>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Admin Menu
+    </button>
+    <%= link_to 'New Blogpost', new_blogpost_path %>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <table>
+          <thead>
             <tr>
-              <td><%= blogpost.title %></td>
-              <td><%= blogpost.category %></td>
-              <td><%= blogpost.content %></td>
-              <td><%= blogpost.author %></td>
-              <td><%= blogpost.image_url %></td>
-              <td><%= link_to 'Show', blogpost %></td>
-              <td><%= link_to 'Edit', edit_blogpost_path(blogpost) %></td>
-              <td><%= link_to 'Destroy', blogpost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Content</th>
+              <th>Author</th>
+              <th>Image url</th>
+              <th colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            <% @blogposts.each do |blogpost| %>
+              <tr>
+                <td><%= blogpost.title %></td>
+                <td><%= blogpost.category %></td>
+                <td><%= blogpost.content %></td>
+                <td><%= blogpost.author %></td>
+                <td><%= blogpost.image_url %></td>
+                <td><%= link_to 'Show', blogpost %></td>
+                <td><%= link_to 'Edit', edit_blogpost_path(blogpost) %></td>
+                <td><%= button_to 'Destroy', blogpost, method: :delete, dependent: :destroy, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
+  <% end %>
 </body>
-
 <br>
-
-<%= link_to 'New Blogpost', new_blogpost_path %>
-
 <footer>
   <%= render partial: "shared/footer" %>
 </footer>

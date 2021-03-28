@@ -1,8 +1,29 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<head>
+  <%= render partial: "shared/navbar" %>
+</head>
 
-<div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary">Left</button>
-  <button type="button" class="btn btn-outline-primary">Middle</button>
-  <button type="button" class="btn btn-outline-primary">Right</button>
+<div class="container">
+  <div class="row pt-4">
+    <div class="col-lg-4 text-center justify-content-center">
+      <a href="/blogposts"><%= image_pack_tag 'reports.png', width:"140", height:"140", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
+      <h2>Blogposts</h2>
+      <p><a class="btn btn-secondary" href="/blogposts">View weather reports »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center justify-content-center">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+      <h2>Heading</h2>
+      <p><a class="btn btn-secondary" href="#">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4 text-center justify-content-center">
+      <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+      <h2>Heading</h2>
+      <p><a class="btn btn-secondary" href="#">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div>
 </div>
+
+<footer>
+  <%= render partial: "shared/footer" %>
+</footer>

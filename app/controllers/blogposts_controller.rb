@@ -1,5 +1,14 @@
 class BlogpostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_admin, :only => [:edit, :destroy]
   before_action :set_blogpost, only: %i[ show edit update destroy ]
+
+
+  def ensure_admin
+    unless current_user && current_user.admin?
+      render :text => "Access Error Message", :status => :unauthorized
+    end
+  end
 
   # GET /blogposts or /blogposts.json
   def index

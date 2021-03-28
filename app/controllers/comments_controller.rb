@@ -58,7 +58,7 @@ class CommentsController < ApplicationController
   # DELETE /movies/1/reviews/2
   def destroy
     @blogpost = Blogpost.find(params[:blogpost_id])
-    @comment = Comment.find(params[:comment_id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to blogpost_comments_path}
