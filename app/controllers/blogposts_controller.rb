@@ -4,6 +4,7 @@ class BlogpostsController < ApplicationController
   before_action :set_blogpost, only: %i[ show edit update destroy ]
 
 
+
   def ensure_admin
     unless current_user && current_user.admin?
       render :text => "Access Error Message", :status => :unauthorized

@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  def isprofanity
+    @input = params[:message]
+    @result = Checkprofanity.runcheck(@input.to_i)
+  end
+  
   def index
     # For URL like /Blogposts/1/comments
     # Get the Blogpost with id=1
@@ -28,6 +33,7 @@ class CommentsController < ApplicationController
     # Blogpost will be associated with the comment
     # @comment = @blogpost.comments.build(params.require(:comment).permit!)
     @comment = @blogpost.comment.build(params.require(:comment).permit(:message))
+    @comment.message = Checkprofanity.runcheck(@comment.message)
     if @comment.save
       # Save the comment successfully
       redirect_to blogpost_comment_url(@blogpost, @comment)
