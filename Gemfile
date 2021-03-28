@@ -5,7 +5,7 @@ ruby '3.0.0'
 
 
 # custom gem profanity filter.
-gem 'isprofanity'
+gem 'isprofanity', :git => 'https://github.com/TheIrishAce/Ruby-Basic-ProfanityFilter.git'
 
 # Devise account creation/login auth gem.
 gem 'devise'
