@@ -7,6 +7,8 @@ ruby '3.0.0'
 # custom gem profanity filter.
 gem 'isprofanity', :git => 'https://github.com/TheIrishAce/Ruby-Basic-ProfanityFilter.git'
 
+gem 'rexml'
+
 # Devise account creation/login auth gem.
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

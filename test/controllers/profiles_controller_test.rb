@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ProfilesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @profile = profiles(:one)
   end
@@ -11,7 +13,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_profile_url
+    get profiles_url
     assert_response :success
   end
 
@@ -19,6 +21,9 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Profile.count') do
       post profiles_url, params: { profile: { address: @profile.address, firstname: @profile.firstname, lastname: @profile.lastname, user_id: @profile.user_id } }
     end
+
+    #@request.env['devise.mapping'] = Devise.mappings[:user]
+    #sign_in users(:one)
 
     assert_redirected_to profile_url(Profile.last)
   end

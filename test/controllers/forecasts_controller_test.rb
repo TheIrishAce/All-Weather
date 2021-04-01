@@ -1,6 +1,8 @@
 require "test_helper"
 
 class ForecastsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @forecast = forecasts(:one)
   end

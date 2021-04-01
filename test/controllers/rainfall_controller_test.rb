@@ -1,23 +1,28 @@
 require "test_helper"
 
 class RainfallControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  #all 4 orignally generated with
+  #get rainfall_edit_url
+
   test "should get index" do
-    get rainfall_index_url
+    get forecast_rainfall_url
     assert_response :success
   end
 
   test "should get show" do
-    get rainfall_show_url
+    get forecast_rainfall_url
     assert_response :success
   end
 
   test "should get new" do
-    get rainfall_new_url
+    get forecast_rainfall_url
     assert_response :success
   end
 
   test "should get edit" do
-    get rainfall_edit_url
+    get forecast_rainfall_url
     assert_response :success
   end
 end

@@ -1,23 +1,25 @@
 require "test_helper"
 
 class CommentControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   test "should get index" do
-    get comment_index_url
+    get blogposts_url
     assert_response :success
   end
 
   test "should get show" do
-    get comment_show_url
+    get blogposts_url
     assert_response :success
   end
 
   test "should get new" do
-    get comment_new_url
+    get blogposts_url
     assert_response :success
   end
 
   test "should get edit" do
-    get comment_edit_url
+    get blogposts_url
     assert_response :success
   end
 end

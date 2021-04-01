@@ -71,6 +71,17 @@ class CommentsController < ApplicationController
       format.json { head :ok }
     end
   end
-  
-    
+
+  # Added this manually
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:message)
+  end
+
 end

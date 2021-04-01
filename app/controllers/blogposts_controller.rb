@@ -1,5 +1,9 @@
+require 'blog_notification/notification'
+require 'blog_notification/displayer'
+require 'blog_notification/subject'
+
 class BlogpostsController < ApplicationController
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
   before_action :ensure_admin, :only => [:edit, :destroy]
   before_action :set_blogpost, only: %i[ show edit update destroy ]
 
@@ -31,18 +35,31 @@ class BlogpostsController < ApplicationController
 
   # POST /blogposts or /blogposts.json
   def create
+    
     @blogpost = Blogpost.new(blogpost_params)
+
+    puts "YERRRRRR" + @blogpost.title
+    
+    @notification = BlogNotification.new(@blogpost.title, @blogpost.category, Time.now)
+    @displayer = Displayer.new(@notification)    
+
+    
+    @notification.update_date()
+    #render partial: "shared/newblog"
+
 
     respond_to do |format|
       if @blogpost.save
-        format.html { redirect_to @blogpost, notice: "Blogpost was successfully created." }
-        format.json { render :show, status: :created, location: @blogpost }
+        @notification.update_date()
+        format.html { render @blogpost , notice: "Blogpost was successfully created.", locals: {:title => @notification.title, :category => @notification.category, :date => @notification.date}}
+        #format.json { render :show, status: :created, location: @blogpost }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @blogpost.errors, status: :unprocessable_entity }
       end
     end
   end
+  helper_method :notification
 
   # PATCH/PUT /blogposts/1 or /blogposts/1.json
   def update
