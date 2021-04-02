@@ -3,14 +3,15 @@ require 'singleton'
 
 class CurrentDate
     include Singleton
-    #attr_accessor :current_day, :current_day_abbr
 
-    def self.dayname()
+    def dayname()
         @current_day = Time.now.strftime("%A, %d/%m/%Y")
+        return @current_day
     end
 
-    def self.abbr_dayname()
-        @current_day = Time.now.strftime("%a, %d/%m/%Y")
+    def abbr_dayname()
+        @current_day_abbr = Time.now.strftime("%a, %d/%m/%Y")
+        return @currnet_day
     end
 end
 

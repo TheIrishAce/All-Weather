@@ -3,14 +3,16 @@ require_relative 'notification'
 class Displayer
     def initialize(notification)
         #When created add itself as an observer.
+        puts "Ran displayer.rb | Initialized, observer added."
         notification.add_observer(self)
-        puts "notification has been made an observer."
+        
     end
 
     def update(notification)
         #callback to observer
-        puts "0000000000000000000000000000000000000000000000000000000000000000000000000000"
+        puts('Ran displayer.rb | Update Notification (Callback)')
         puts "Weather Report #{notification.title} was published on #{notification.date}\n"
+        
         
     end
 end

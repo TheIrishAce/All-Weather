@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'rainfalls/index', :action=>'index', :controller=>'rainfalls'
   get 'rainfalls/show', :action=>'show', :controller=>'rainfalls'
+  #get 'rainfalls/show/:id/:forecast_id', :action=>'show', :controller=>'rainfalls'
   get 'rainfalls/new', :action=>'new', :controller=>'rainfalls'
   get 'rainfalls/edit', :action=>'edit', :controller=>'rainfalls'
+  #post 'forecasts/:forecast_id/rainfalls/:id', :action=>'create', :controller=>'rainfalls' => as 
   resources :forecasts do
     resources :rainfalls
   end

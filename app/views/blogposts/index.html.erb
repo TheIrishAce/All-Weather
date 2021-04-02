@@ -3,10 +3,7 @@
 </head>
 
 <p id="notice"><%= notice %></p>
-
-
-
-<h1>Blogposts</h1>
+<%= puts "Weather Report #{@notification} was published on #{@notification}\n" %>
 
 <body>
   <div class="container-fluid">
@@ -14,6 +11,7 @@
       <div class="col col-lg-2 justify-content-center">
       </div>
       <div class="col col-lg-7">
+        <h1>Blogposts</h1>
         <% @blogposts.each do |blogpost| %>
           <div class="container bg-light border mb-4 justify-content-md-center">
             <br>

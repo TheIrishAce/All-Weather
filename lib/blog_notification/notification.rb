@@ -1,13 +1,12 @@
 require_relative 'subject'
 
-puts('yerrrrrrrooooooo')
-
 class BlogNotification
     include Subject
     attr_reader :title, :category
     attr_accessor :date
 
     def initialize(title, category, date)
+        puts('Initilized notification.rb | BlogNotification')
         super()
         @title = title
         @category = category

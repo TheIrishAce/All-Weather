@@ -1,6 +1,7 @@
 require 'blog_notification/notification'
 require 'blog_notification/displayer'
 require 'blog_notification/subject'
+require 'day_of_week/current_day'
 
 class BlogpostsController < ApplicationController
   #before_action :authenticate_user!
@@ -18,6 +19,7 @@ class BlogpostsController < ApplicationController
   # GET /blogposts or /blogposts.json
   def index
     @blogposts = Blogpost.all
+    @date = CurrentDate.instance.dayname
   end
 
   # GET /blogposts/1 or /blogposts/1.json
@@ -37,21 +39,22 @@ class BlogpostsController < ApplicationController
   def create
     
     @blogpost = Blogpost.new(blogpost_params)
+    #@blogpost.add_observer(self)
 
-    puts "YERRRRRR" + @blogpost.title
+    #puts "YERRRRRR" + @blogpost.title
     
-    @notification = BlogNotification.new(@blogpost.title, @blogpost.category, Time.now)
-    @displayer = Displayer.new(@notification)    
+    #@notification = BlogNotification.new(@blogpost.title, @blogpost.category, Time.now)
+    #@displayer = Displayer.new(@notification)    
 
     
-    @notification.update_date()
+    #@notification.update_date()
     #render partial: "shared/newblog"
 
 
     respond_to do |format|
       if @blogpost.save
-        @notification.update_date()
-        format.html { render @blogpost , notice: "Blogpost was successfully created.", locals: {:title => @notification.title, :category => @notification.category, :date => @notification.date}}
+        #@notification.update_date()
+        format.html { redirect_to blogposts_path , notice: "Blogpost was successfully created.", locals: {:title => @blogpost.title, :category => @blogpost.category, :date => @date}}
         #format.json { render :show, status: :created, location: @blogpost }
       else
         format.html { render :new, status: :unprocessable_entity }
