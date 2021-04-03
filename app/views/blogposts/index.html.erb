@@ -40,7 +40,9 @@
             <% end %>
               <% @comments = blogpost.comment %>
               <p class="fs-4 p-2">Comments Section</p>
-              <%= link_to 'New Comment', new_blogpost_comment_path(blogpost) %>
+              <% if current_user.present? %>
+                <%= link_to 'New Comment', new_blogpost_comment_path(blogpost) %>
+              <% end %>
               <% for comment in @comments %>
                 <br>
                 <div class="col-md-12 offset-md-3 pd-5">
@@ -71,7 +73,7 @@
       <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         Admin Menu
       </button>
-      <%= link_to 'New Blogpost', new_blogpost_path %>
+      <%= link_to 'Create New Blogpost', new_blogpost_path, class: "btn btn-success fw-normal text-white" %>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
           <table>
@@ -97,7 +99,6 @@
                   <td><%= link_to 'Show', blogpost %></td>
                   <td><%= link_to 'Edit', edit_blogpost_path(blogpost) %></td>
                   <td><%= button_to 'Destroy', blogpost, method: :delete, dependent: :destroy, data: { confirm: 'Are you sure?' } %></td>
-                  <td><%= button_to 'Destroy All', blogpost, method: :delete, dependent: :destroy, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
               <% end %>
             </tbody>

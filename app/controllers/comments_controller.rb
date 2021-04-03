@@ -36,7 +36,9 @@ class CommentsController < ApplicationController
     @comment.message = Checkprofanity.runcheck(@comment.message)
     if @comment.save
       # Save the comment successfully
-      redirect_to blogpost_comment_url(@blogpost, @comment)
+      redirect_to blogposts_path(@blogpost)
+      #redirect_to blogpost_comment_url(@blogpost, @comment)
+      #redirect_to blogpost_url(@blogpost)
     else
       render :action => "new"
     end
