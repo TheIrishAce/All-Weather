@@ -9,8 +9,9 @@
   <div class="container-fluid">
     <div class="row justify-content-md-center">
       <div class="col col-lg-2 justify-content-center">
+        <%= render partial: "shared/weather_rss" %>
       </div>
-      <div class="col col-lg-7">
+      <div class="col col-lg-8">
         <h1>Blogposts</h1>
         <% @blogposts.each do |blogpost| %>
           <div class="container bg-light border mb-4 justify-content-md-center">

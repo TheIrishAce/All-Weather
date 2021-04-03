@@ -1,0 +1,15 @@
+<% @weather_rss.each do |article| %>
+    <div class="col article-padding p-5 border">
+        <a href="<%= article[:link] %>"><p><strong><%= article[:title] %></strong></p></a>
+            <p style="margin-top:-10px"> 
+                <%= article[:date].strftime("Published: %F") %> 
+                <br>
+                <a target="_blank" href="https://www.dunsink.dias.ie/"><em>Source: Dunsink's observatory, Dublin, Ireland.</em>
+                </a>
+            </p>
+        </a>
+        <p>
+            <%= article[:description]%>
+        </p>
+    </div>
+<% end %>

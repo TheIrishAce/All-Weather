@@ -1,14 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+#base ruby gem.
 ruby '3.0.0'
 
-
-# custom gem profanity filter.
+# My custom gem that is designed as a profanity filter. Links to git repo instead of a local gem file. 
+# The gem is still compiled locally using gemspec file before it was pushed to my Git repo.
+# https://github.com/TheIrishAce/Ruby-Basic-ProfanityFilter
 gem 'isprofanity', :git => 'https://github.com/TheIrishAce/Ruby-Basic-ProfanityFilter.git'
-
+#rexml is a requirement that's needed for Rails 6 but isn't packaged by default.
 gem 'rexml'
-
+#rss feeds, used for processing xml from public Irish weather rss feed.
+gem 'rss', '~> 0.2.9'
+#open uri used for URI's. Specificly used for weather RSS feed in my application.
+gem 'open-uri', '~> 0.1.0'
 # Devise account creation/login auth gem.
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -23,17 +28,8 @@ gem 'webpacker', '~> 6.0.0.beta.6'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-
+# Bootstrap 5 beta 2 gem, this is potentially unneeded.
 gem 'bootstrap', '~> 5.0.0.beta2'
-
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -14,10 +14,3 @@ class CurrentDate
         return @currnet_day
     end
 end
-
-
-#@date = CurrentDate.instance
-#puts @date.dayname
-
-#date2 = CurrentDate.instance
-#puts "is date the same instance as date2 #{date.equal?(date2) }\n\n"

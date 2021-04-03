@@ -2,6 +2,7 @@ require 'blog_notification/notification'
 require 'blog_notification/displayer'
 require 'blog_notification/subject'
 require 'day_of_week/current_day'
+require 'weather_rss_reader/weather_rss'
 
 class BlogpostsController < ApplicationController
   #before_action :authenticate_user!
@@ -19,7 +20,10 @@ class BlogpostsController < ApplicationController
   # GET /blogposts or /blogposts.json
   def index
     @blogposts = Blogpost.all
+    #used for current day and date.
     @date = CurrentDate.instance.dayname
+    #@WeatherRss = WeatherRSS.new()
+    @weather_rss = WeatherRSS.weather_rss
   end
 
   # GET /blogposts/1 or /blogposts/1.json
