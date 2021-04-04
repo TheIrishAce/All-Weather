@@ -2,15 +2,23 @@
 <nav class="navbar navbar-light bg-light ">
   <div class="container justify-content-center">
     <div class="row justify-content-center">
-      <div class="col">
-      </div>
-      <div class="col">
-        <a href="/"><%= image_pack_tag 'weather_icon.png', width:"128", height:"128", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
-        <div class="row text-center mt-2">
-          <p class="fs-5">All Weather</p>
+      <div class="row justify-content-center">
+        <div class="col">
+        </div>
+        <div class="col">
+          <a href="/"><%= image_pack_tag 'weather_icon.png', width:"128", height:"128", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
+          <div class="row text-center mt-2">
+            <p class="fs-5">All Weather</p>
+          </div>
+        </div>
+        <div class="col">
         </div>
       </div>
-      <div class="col">
+      <div class="row justify-content-center">
+        <form class="input-group" action="/search">
+          <input type="text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="q" />
+          <button type="submit" class="btn btn-outline-primary">Search</button>
+        </form>
       </div>
     </div>
   </div>

@@ -1,0 +1,48 @@
+<h1>Blogposts</h1>
+        <% @blogposts.each do |blogpost| %>
+          <div class="container bg-light border mb-4 justify-content-md-center">
+            <br>
+            <div class="d-flex flex-row">
+              <h3><%= blogpost.title %></h3>
+            </div>
+            <div class="d-flex flex-row mb-2">
+              <div class="p-2">Category: <b><%= blogpost.category %></b></div>
+              <div class="p-2">Author: <b><%= blogpost.author %></b></div>
+              <div class="p-2"><i>Date Created: <%= blogpost.created_at %></i></div>
+            </div>
+            <div class="d-flex flex-row mb-2">
+              <div class="d-flex flex-col">
+                <div class="p-2"><%= image_tag (blogpost.image_url), size: "260x180"%></div>
+              </div>
+              <div class="d-flex flex-col">
+                <div class="p-2"><p><%= blogpost.content %></p></div>
+              </div>
+            </div>
+            <div>
+            <% if current_user.present? %>            
+              <% if current_user.admin? %>
+                <a href="<%= blogpost_comments_path(blogpost, @comment) %>">Comments Section</a>
+              <% end %>
+            <% end %>
+              <% @comments = blogpost.comment %>
+              <p class="fs-4 p-2">Comments Section</p>
+              <% if current_user.present? %>
+                <%= link_to 'New Comment', new_blogpost_comment_path(blogpost) %>
+              <% end %>
+              <% for comment in @comments %>
+                <br>
+                <div class="col-md-12 offset-md-3 pd-5">
+                  <div class="col col-lg-2">
+                  </div>
+                  <div class="col col-lg-6">
+                    <div class=" w-100 p-2 row border bg-light border-secondary rounded-pill border-1 border-bottom-2 border-top-0 border-start-0 border-end-0">
+                      <p class="fw-light">Comment:</p> <p class="fs-6"><%= comment.message %></p>
+                    </div>
+                  </div>
+                  <div class="col col-lg-2">
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>

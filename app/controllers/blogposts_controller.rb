@@ -21,9 +21,12 @@ class BlogpostsController < ApplicationController
   def index
     @blogposts = Blogpost.all
     #used for current day and date.
-    @date = CurrentDate.instance.dayname
     #@WeatherRss = WeatherRSS.new()
     @weather_rss = WeatherRSS.weather_rss
+  end
+
+  def search
+    @blogposts = Blogpost.where("title LIKE ?", "%" + params[:q] + "%")
   end
 
   # GET /blogposts/1 or /blogposts/1.json

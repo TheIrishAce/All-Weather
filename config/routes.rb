@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/signedinuserprofile' => 'profiles#signedinuserprofile'
   resources :profiles
   devise_for :users
-  get 'home/index', :controller=>'weekdays', :action=>'day'
+  #get 'home/index', :controller=>'weekdays', :action=>'day'
+  get 'home/index'
   root to: "home#index"
   get 'rainfalls/index', :action=>'index', :controller=>'rainfalls'
   get 'rainfalls/show', :action=>'show', :controller=>'rainfalls'
@@ -24,5 +25,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #get '/day', :controller=>'weekdays', :action=>'day'
   #post '/day', :controller=>'weekdays', :action=>'day'
+  get 'search', to: "blogposts#search"
 
 end

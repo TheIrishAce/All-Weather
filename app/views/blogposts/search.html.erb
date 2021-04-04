@@ -1,0 +1,22 @@
+<head>
+  <%= render partial: "shared/navbar" %>
+</head>
+
+<h1> Searched Blogpost Results</h1>
+
+<%= render partial: "blogposts/blogpost_record" %>
+
+<% @date %>
+
+<% if @blogposts.blank? %>
+    <div class="row justify-content-center">
+        <div class="col col-lg-12 justify-content-center text-center">
+            <h2 class="text-danger pb-5 pt-5">No records for searched blogpost</h2>  
+        </div>
+    </div>
+           
+<% end %>
+
+<footer>
+  <%= render partial: "shared/footer" %>
+</footer>
