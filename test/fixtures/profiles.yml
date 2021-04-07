@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  firstname: MyString
-  lastname: MyString
-  address: MyString
-  user: one
+  firstname: "Bob"
+  lastname: "Ross"
+  address: "5 Vurlion Drive"
+  user_id: 1
 
 two:
-  firstname: MyString
-  lastname: MyString
-  address: MyString
-  user: two
+  firstname: "Amy"
+  lastname: "Smith"
+  address: "81 Apt Drive"
+  user_id: 2

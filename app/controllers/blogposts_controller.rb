@@ -87,6 +87,7 @@ class BlogpostsController < ApplicationController
   # DELETE /blogposts/1 or /blogposts/1.json
   def destroy
     @blogpost.destroy
+    puts "Should be destroyed"
     respond_to do |format|
       format.html { redirect_to blogposts_url, notice: "Blogpost was successfully destroyed." }
       format.json { head :no_content }
@@ -97,6 +98,7 @@ class BlogpostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_blogpost
       @blogpost = Blogpost.find(params[:id])
+      puts @blogpost.id
     end
 
     # Only allow a list of trusted parameters through.

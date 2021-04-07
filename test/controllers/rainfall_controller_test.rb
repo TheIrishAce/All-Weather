@@ -1,6 +1,7 @@
 require "test_helper"
 
 class RainfallControllerTest < ActionDispatch::IntegrationTest
+
   test "should get index" do
     forecast_id = 1
     get forecast_rainfalls_path(forecast_id)
@@ -23,10 +24,13 @@ class RainfallControllerTest < ActionDispatch::IntegrationTest
 
   test "should create rainfall" do
     assert_difference('Rainfall.count') do
-      post forecast_rainfalls_url, params: { rainfall: { id: @rainfall.id, amount: @rainfall.amount, warning_yellow: @rainfall.warning_yellow, warning_orange: @rainfall.warning_orange, warning_red: @rainfall.warning_red } }
+      #@rain = Rainfall.create(amount: 55.5, forecast_id: 1)
+      @forecast = forecasts(:two)
+      
+      post forecast_rainfalls_path, params: { rainfall: { amount: 50, forecast_id: @forecast.id } }
     end
-
-    assert_redirected_to rainfall_url(Rainfall.last)
+    
+    assert_redirected_to new_forecast_rainfall(@rain)
   end
 
   test "should get edit" do

@@ -1,12 +1,14 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   title: "Test Blog 1 Title"
   category: "Test Blog 1 Category"
   author: "Test Blog 1 Author"
   image_url: "https://previews.123rf.com/images/trendobjects/trendobjects1406/trendobjects140600059/29307450-bad-weather-caution-warning-sign.jpg"
 
 two:
+  id: 2
   title: "Test Blog 2 Title"
   category: "Test Blog 2 Category"
   author: "Test Blog 2 Author"

@@ -18,11 +18,11 @@ class BlogpostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create blogpost" do
-    assert_difference('Blogpost.count') do
+    assert_difference('Blogpost.count', 1) do
       post blogposts_url, params: { blogpost: { author: @blogpost.author, category: @blogpost.category, image_url: @blogpost.image_url, title: @blogpost.title } }
     end
 
-    #assert_redirected_to blogposts_url(Blogpost.last)
+    assert_redirected_to blogposts_url()
   end
 
   test "should show blogpost" do
@@ -42,9 +42,12 @@ class BlogpostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy blogpost" do
     assert_difference('Blogpost.count', -1) do
+      #blog_id = @blogpost.id
+      #Blogpost.destroy(blog_id)
       delete blogpost_url(@blogpost)
     end
 
-    assert_redirected_to blogposts_url
+    assert_redirected_to blogposts_path
   end
+
 end

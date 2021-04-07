@@ -11,11 +11,13 @@
 # column: value
 
 one:
-  email: user_one@test.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  id: 1
+  email: amysmith@yahoo.com
+  encrypted_password: MyString
   #confirmed_at: <%= Time.now %>
   
 two:
-  email: user_two@test.com
-  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  id: 2
+  email: jimbob@gmail.com
+  encrypted_password: MyString
   #confirmed_at: <%= Time.now %>

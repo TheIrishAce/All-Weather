@@ -31,7 +31,7 @@ class RainfallsController < ApplicationController
     # Populate an review associate with movie 1 with form data
     # Movie will be associated with the review
     # @rainfall = @forecast.rainfalls.build(params.require(:review).permit!)
-    @rainfall = @forecast.rainfall.build(params.require(:rainfall).permit(:amount))
+    @rainfall = @forecast.rainfall.build(params.require(:rainfall).permit(:amount, :forecast_id))
     if @rainfall.save
     # Save the review successfully
     redirect_to forecast_rainfall_url(@forecast, @rainfall)
@@ -70,5 +70,16 @@ class RainfallsController < ApplicationController
     format.xml { head :ok }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_rainfall
+      @rainfall = Rainfall.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def rainfall_params
+      params.require(:rainfall).permit(:amount, :forecast_id)
+    end
 end
   

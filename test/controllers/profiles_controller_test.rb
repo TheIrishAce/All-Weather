@@ -18,8 +18,10 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create profile" do
-    assert_difference('Profile.count') do
-      post profiles_url, params: { profile: { address: @profile.address, firstname: @profile.firstname, lastname: @profile.lastname, user_id: @profile.user_id } }
+    assert_difference('Profile.count', 1) do
+      post profiles_url, params: { profile: { id: 1, address: "23 Viridin Drive", firstname: "Greg", lastname: "Nivile", user_id: 2 } }
+      #profile = Profile.create(id: 1, firstname: "Greg", lastname: "Nivile", address: "23 Viridin Drive", user_id: 2)
+      #post profiles_url, params: { profile: { id: profile.id, address: profile.address, firstname: profile.firstname, lastname: profile.lastname, user_id: profile.user_id } }
     end
 
     #@request.env['devise.mapping'] = Devise.mappings[:user]

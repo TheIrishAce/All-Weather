@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          
   #has_one :profile, -> { where(user_id: user_id) }
   has_one :profile
+  validates :email , presence: true, length: {minimum: 10}
 end
