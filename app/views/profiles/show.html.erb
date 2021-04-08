@@ -7,6 +7,15 @@
 
     <a href="/profiles/<%= @profile.user_id %>"><%= image_pack_tag 'account.png', width:"128", height:"128", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
 
+    <p class="fs-4 pt-3">
+      <strong>Account Type:</strong>
+      <% if current_user.admin? %>
+        <b class="text-success">Admin Account</b>
+      <% else %>
+         <b class="text-success">User Account</b>
+      <% end %>
+    </p>
+
     <p class="fs-4">
       <strong>Firstname:</strong>
       <%= @profile.firstname %>
@@ -27,7 +36,9 @@
       <%= @profile.user_id %>
     </p>
   
-    <%= link_to 'Edit', edit_profile_path(@profile) %> |
-    <%= link_to 'Back', profiles_path %>
+    <%= link_to 'Edit', edit_profile_path(@profile) %>
+    <% if user_signed_in? && current_user.admin? %>
+      | <%= link_to 'Back', profiles_path %>
+    <% end %>
   </div>
 </div>

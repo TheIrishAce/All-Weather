@@ -1,0 +1,35 @@
+<h1>Forecasts</h1>
+<% @forecasts.each do |forecast| %>
+  <div class="container bg-light border mb-4 justify-content-md-center">
+    <div class="row">
+      <div class="col">
+        <div>
+          <h2>Forecast Info</h2>
+          <p>
+            <strong>Day:</strong>
+            <%= forecast.day %>
+          </p>
+
+          <p>
+            <strong>Date:</strong>
+            <%= forecast.date %>
+          </p>
+
+          <p>
+            <strong>Forecast:</strong>
+            <%= forecast.forecast %>
+          </p>
+
+          <!-- Display the reviews of a movie -->
+          <h2>Rainfall Forecast</h2>
+          <% forecast.rainfall.each do |rainfall| %>
+          <p>
+          <b>Rainfall details:</b>
+          <%= rainfall.amount %>
+          </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

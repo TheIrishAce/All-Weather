@@ -1,10 +1,21 @@
 class ForecastsController < ApplicationController
   #before_action :authenticate_user!
+  before_action :ensure_admin, :only => [ :new, :edit, :destroy]
   before_action :set_forecast, only: %i[ show edit update destroy ]
 
+  def ensure_admin
+    unless current_user && current_user.admin?
+      render :text => "Access Error Message", :status => :unauthorized
+    end
+  end
+  
   # GET /forecasts or /forecasts.json
   def index
     @forecasts = Forecast.all
+  end
+
+  def search
+    @forecasts = Forecast.where("date LIKE ?", "%" + params[:q] + "%")
   end
 
   # GET /forecasts/1 or /forecasts/1.json

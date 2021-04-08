@@ -23,8 +23,12 @@
 <%= rainfall.amount %>
 </p>
 <% end %>
-<%= link_to 'Edit Forecast', edit_forecast_path(@forecast) %> |
+<% if user_signed_in? && current_user.admin? %>
+  <%= link_to 'Edit Forecast', edit_forecast_path(@forecast) %> |
+  <%= link_to 'Forecast Rainfall', forecast_rainfalls_path(@forecast) %>
+<% end %>
 <%= link_to 'Back', forecasts_path %>
-<%= link_to 'Show Forecasts', forecast_rainfalls_path(@forecast) %>
+
+
 
 

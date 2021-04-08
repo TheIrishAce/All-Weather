@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #get '/day', :controller=>'weekdays', :action=>'day'
   #post '/day', :controller=>'weekdays', :action=>'day'
-  get 'search', to: "blogposts#search"
+  get 'blogpostsearch', to: "blogposts#search"
+  get 'forecastsearch', to: "forecasts#search"
 
 end

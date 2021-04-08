@@ -1,33 +1,40 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "shared/navbar" %>
+<%= render partial: "shared/forecast_search" %>
 
-<h1>Forecasts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Day</th>
-      <th>Date</th>
-      <th>Forecast</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.day %></td>
-        <td><%= forecast.date %></td>
-        <td><%= forecast.forecast %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-          <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+<div class="row">
+  <div class="col text-center justify-content-center pt-5">
+    <p id="notice"><%= notice %></p>
+  
+    <h1>Forecasts</h1>
+    <div>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Date</th>
+            <th>Forecast</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <div>
+          <% @forecasts.each do |forecast| %>
+            <tr>
+              <td><%= forecast.day %></td>
+              <td><%= forecast.date %></td>
+              <td><%= forecast.forecast %></td>
+              <td><%= link_to 'Show', forecast %></td>
+              <% if user_signed_in? && current_user.admin? %>
+                <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
+                <td><%= button_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>                            
+          <% end %>
+        </div>
+      </table>
+    </div>
+    <br>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= link_to 'New Forecast', new_forecast_path %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Forecast', new_forecast_path %>
+  </div>
+</div>

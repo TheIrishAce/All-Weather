@@ -1,4 +1,13 @@
 class RainfallsController < ApplicationController
+  before_action :ensure_admin, :only => [:index, :edit, :destroy]
+  before_action :set_rainfall, only: %i[ show edit update destroy ]
+
+  def ensure_admin
+    unless current_user && current_user.admin?
+      render :text => "Access Error Message", :status => :unauthorized
+    end
+  end
+
   #before_action :authenticate_user!
   # GET /movies/1/rainfalls
   def index
