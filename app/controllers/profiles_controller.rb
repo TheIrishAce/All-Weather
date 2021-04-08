@@ -1,5 +1,13 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_admin, :only => [:index, :edit, :destroy]
   before_action :set_profile, only: %i[ show edit update destroy ]
+
+  def ensure_admin
+    unless current_user && current_user.admin?
+      render :text => "Access Error Message", :status => :unauthorized
+    end
+  end
 
   def signedinuserprofile profile = Profile.find_by_user_id(current_user.id) 
     if profile.nil? 

@@ -16,7 +16,7 @@
       </div>
       <div class="row justify-content-center">
         <form class="input-group" action="/search">
-          <input type="text" class="form-control rounded" placeholder="Search by Title" aria-label="Search" aria-describedby="search-addon" name="q" />
+          <input type="text" class="form-control rounded" placeholder="Search for weather blogpost by title..." aria-label="Search" aria-describedby="search-addon" name="q" />
           <button type="submit" class="btn btn-outline-primary">Search</button>
         </form>
       </div>
@@ -37,7 +37,12 @@
     </div>
     <div class="col-lg align-self-end">
       <div class="row">
-        <div>
+        <div class="col justify-content-center text-align-center">
+          <% if user_signed_in? %>
+            <a href="/profiles/<%= current_user.id %>"><%= image_pack_tag 'account.png', width:"85", height:"85", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
+          <% end %>
+        </div>
+        <div class="col">
           <% if user_signed_in? %>
             <% if current_user.admin? %>
               <p class="text-success">Admin Account</p>
@@ -45,15 +50,15 @@
               <p class="text-success">User Account</p>
             <% end %>
           <% end %>
-        </div>
-        <div>
-          <% if user_signed_in? %>
-            <p>Signed in as... <%=current_user.email %></p>
-            <%=button_to 'Sign out', destroy_user_session_path, :method => :delete%>
-          <% else %>
-            <%=link_to 'Register', new_user_registration_path%> or
-            <%=link_to 'Sign in', new_user_session_path%>
-          <% end %>
+          <div>
+            <% if user_signed_in? %>
+              <p>Signed in as... <%=current_user.email %></p>
+              <%=button_to 'Sign out', destroy_user_session_path, :method => :delete%>
+            <% else %>
+              <%=link_to 'Register', new_user_registration_path%> or
+              <%=link_to 'Sign in', new_user_session_path%>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

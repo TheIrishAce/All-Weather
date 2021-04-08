@@ -1,6 +1,12 @@
-<h1>Editing Profile</h1>
+<%= render partial: "shared/navbar" %>
 
-<%= render 'form', profile: @profile %>
-
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+<div class="row">
+    <div class="col text-center justify-content-center pt-5">
+        <h1>Editing Profile</h1>
+    
+        <%= render 'form', profile: @profile %>
+    
+        <%= link_to 'Show', @profile %> |
+        <%= link_to 'Back', profiles_path %>
+    </div>
+</div>

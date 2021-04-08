@@ -1,9 +1,4 @@
 class CommentsController < ApplicationController
-  def isprofanity
-    @input = params[:message]
-    @result = Checkprofanity.runcheck(@input.to_i)
-  end
-  
   def index
     # For URL like /Blogposts/1/comments
     # Get the Blogpost with id=1

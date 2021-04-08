@@ -1,24 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "shared/navbar" %>
+<div class="row">
+  <div class="col text-center justify-content-center pt-5">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Firstname:</strong>
-  <%= @profile.firstname %>
-</p>
+    <h2 class="pb-5">Welcome back <%= @profile.firstname %> it's great to see you again..</h2>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @profile.lastname %>
-</p>
+    <a href="/profiles/<%= @profile.user_id %>"><%= image_pack_tag 'account.png', width:"128", height:"128", class:"d-inline-block align-top", alt:"all-weather-logo"%></a>
 
-<p>
-  <strong>Address:</strong>
-  <%= @profile.address %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+    <p class="fs-4">
+      <strong>Firstname:</strong>
+      <%= @profile.firstname %>
+    </p>
+  
+    <p class="fs-4">
+      <strong>Lastname:</strong>
+      <%= @profile.lastname %>
+    </p>
+  
+    <p class="fs-4">
+      <strong>Your Current Home Address:</strong>
+      <%= @profile.address %>
+    </p>
+  
+    <p class="fs-4">
+      <strong>Unique User Identifcation Number:</strong>
+      <%= @profile.user_id %>
+    </p>
+  
+    <%= link_to 'Edit', edit_profile_path(@profile) %> |
+    <%= link_to 'Back', profiles_path %>
+  </div>
+</div>

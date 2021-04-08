@@ -1,10 +1,6 @@
 require "test_helper"
 
 class ForecastTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-
   test "valid forecast" do
     forecast = Forecast.new(day: "Monday", date: Date.new, forecast: "Heavy rain today.")
     assert forecast.valid?

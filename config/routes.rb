@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'rainfalls/new', :action=>'new', :controller=>'rainfalls'
   get 'rainfalls/edit', :action=>'edit', :controller=>'rainfalls'
   #post 'forecasts/:forecast_id/rainfalls/:id', :action=>'create', :controller=>'rainfalls' => as 
-  post '/checkprofanity', :controller=>'comments', :action=>'isprofanity'
+  #post '/checkprofanity', :controller=>'comments', :action=>'isprofanity'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #get '/day', :controller=>'weekdays', :action=>'day'
   #post '/day', :controller=>'weekdays', :action=>'day'
