@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_admin, :only => [:index, :edit, :destroy]
+  before_action :ensure_admin, :only => [:index, :destroy]
   before_action :set_profile, only: %i[ show edit update destroy ]
 
   def ensure_admin

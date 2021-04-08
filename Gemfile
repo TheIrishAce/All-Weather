@@ -16,6 +16,7 @@ gem 'rss', '~> 0.2.9'
 gem 'open-uri', '~> 0.1.0'
 # Devise account creation/login auth gem.
 gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # Use Puma as the app server
