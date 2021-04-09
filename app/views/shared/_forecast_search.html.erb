@@ -1,8 +1,12 @@
 <div class="container justify-content-center py-5">
     <div class="row justify-content-center">
     <form class="input-group" action="/forecastsearch">
-        <input type="text" class="form-control rounded" placeholder="Search for weather reports by date" aria-label="index" aria-describedby="search-addon" name="q" />
+        <input type="text" class="form-control rounded" placeholder="Search for weather reports by date" aria-label="index" aria-describedby="search-addon" name="query" />
         <button type="submit" class="btn btn-outline-primary">Search</button>
+        <div class="md-form">
+            <input placeholder="Selected date" type="text" id="date-picker-example" class="form-control datepicker" name="query">
+            <label for="date-picker-example">Try me...</label>
+        </div>
     </form>
     </div>
 </div>
