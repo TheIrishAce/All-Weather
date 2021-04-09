@@ -15,8 +15,7 @@ class ForecastsController < ApplicationController
   end
 
   def search
-    @forecasts = Forecast.where("date::text LIKE ?", "%" + "DATE(#{params[:query]})" + "%")
-    puts "DATE(#{params[:query]})"
+    @forecasts = Forecast.where("date::text LIKE ?", "%" + params[:query] + "%")
   end
 
   # GET /forecasts/1 or /forecasts/1.json
